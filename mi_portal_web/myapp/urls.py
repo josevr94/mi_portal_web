@@ -8,3 +8,6 @@ urlpatterns = [
     path('servicios/',views.servicios,name='servicios'),
     path("blog/", views.blog, name="blog"),
 ]
+
+# este archivo fue creado por mi, no viene por defecto 
+# aca ponemos todos las url de nuestra pagina, si queremos agregar una nueva se tiene q agregar aca 

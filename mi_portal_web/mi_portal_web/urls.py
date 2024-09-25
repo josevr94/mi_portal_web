@@ -21,3 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('myapp.urls')),
 ]
+# esta pestaña esta en el archivo principal del django, el cual es el que administra los modulos que iremos creando despues como  el modulo 'myapp'
+# en este caso como cremos el modulo myapp. myapp tienen varias url que creamos en ese modulo ,pero para que funcionen tenemos que agregar el modulo completo al archivo principal
