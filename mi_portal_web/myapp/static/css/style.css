@@ -5,10 +5,15 @@ body{
 }
 
 h1{
+    
     color: rgb(51, 33, 33);
 }
 p{
     color: antiquewhite;
+}
+
+div{
+    background: rgba(255, 0, 0, 0.446);
 }
 img{
     display: block;

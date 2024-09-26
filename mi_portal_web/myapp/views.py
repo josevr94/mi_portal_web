@@ -21,5 +21,14 @@ def blog(request):
     # return HttpResponse('Blog de la pagina')
     return render(request,'myapp/blog.html')
 
+def our_teams(request):
+    return render(request,'myapp/contact.html')
+
+def portafolio(request):
+    return render(request,'myapp/contact.html')
+
+def testimonios(request):
+    return render(request,'myapp/contact.html')
+
 # Create your views here.
 # aca esta el view el cual es el intermediario entre el template y el modelo, aca va la parte que hara la coneccion 
