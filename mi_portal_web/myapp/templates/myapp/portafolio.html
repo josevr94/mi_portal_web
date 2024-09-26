@@ -1,11 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio</title>
-</head>
-<body>
-    <h1>Este es el portafilio</h1>
-</body>
-</html>
+{% extends 'myapp/base.html' %}
+
+{% block title %} Portafilio {% endblock title %}
+    
+{% load static %}
+
+{% block content %}
+    
+
+    
+    <h1 class="d-flex justify-content-center mt-2">Este es el portafilio</h1>
+    <div class="container ">
+        <div class= "row mt-5">
+            <div class="col">
+                <div class="card" style="width: 300px;">
+                    <img src="{% static 'img/pajaro.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">TRABAJO 1: Aqui mostramos el pimero trabajo realizado con tal cosa</p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 300px;">
+                    <img src="{% static 'img/perro.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">TRABAJO 2: Aqui mostramos el pimero trabajo realizado con tal cosa</p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 300px;">
+                    <img src="{% static 'img/gato.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">TRABAJO 3: Aqui mostramos el pimero trabajo realizado con tal cosa</p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 300px;">
+                    <img src="{% static 'img/raton.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">TRABAJO 4: Aqui mostramos el pimero trabajo realizado con tal cosa</p>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}   

@@ -11,7 +11,7 @@ def about(request):
 
 def contact(request):
     # return HttpResponse('Pagina de contacto')
-    return render(request,'myapp/contact.html')
+    return render(request,'myapp/contacto.html')
 
 def servicios(request):
     # return HttpResponse('Servicios de tu pagina')
@@ -22,13 +22,13 @@ def blog(request):
     return render(request,'myapp/blog.html')
 
 def our_teams(request):
-    return render(request,'myapp/contact.html')
+    return render(request,'myapp/our_teams.html')
 
 def portafolio(request):
-    return render(request,'myapp/contact.html')
+    return render(request,'myapp/portafolio.html')
 
 def testimonios(request):
-    return render(request,'myapp/contact.html')
+    return render(request,'myapp/testimonios.html')
 
 # Create your views here.
 # aca esta el view el cual es el intermediario entre el template y el modelo, aca va la parte que hara la coneccion 

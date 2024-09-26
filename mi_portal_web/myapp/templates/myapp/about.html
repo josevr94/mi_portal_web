@@ -1,27 +1,29 @@
-<!DOCTYPE html>
+{% extends 'myapp/base.html' %}
+{% block title %} About{% endblock title %}
 {% load static %}
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Pagina about</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href= "{% static 'css/style.css' %}">
-        
-    </head>
-    <body>
-        <h1>Bienvenido a esta pagina sobre nosotros</h1>
-        <div>
-            <p> esta es la pagina acerca de nosotros </p>
+
+{% block content %}
+    
+
+    
+    
+        <div  class="p-3 mb-2 bg-black text-white">
+            <h1>Bienvenido a esta pagina sobre nosotros</h1>
+        <div class="mx-auto p-2" style="width: 200px;">
+            <p>
+                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                click para desplegar
+                </button>
+            </p>
+            <div style="min-height: 120px;">
+                <div class="collapse collapse-horizontal" id="collapseWidthExample">
+                <div class="card card-body" style="width: 300px;">
+                    <p class="text-dark bg-white">Estamos intentado aprender a usar esto</p>
+                </div>
+                </div>
+            </div>
         </div>    
-        
-        <div>
-            <p>estamos intentando aprender sobre como usar django</p>
-        </div>    
-        <div>
-            <img src="mi_portal_web\myapp\static\img\django.jpg" alt="django">
+        <div class="d-flex justify-content-center ">
+            <img src="{% static 'img/django.jpg' %}" alt="django">
         </div>
-        
-    </body>
-</html>
+{% endblock content %}        

@@ -1,6 +1,6 @@
 body{
     font-family: Arial, sans-serif;
-    background-color: chocolate;
+    background-color: rgb(27, 15, 5);
 
 }
 
@@ -13,10 +13,11 @@ p{
 }
 
 div{
-    background: rgba(255, 0, 0, 0.446);
+    background: rgba(5, 5, 5, 0.446);
 }
 img{
-    display: block;
-    width: 50%;
+    display: inline-block;
+    width: 300px;
     margin: auto;
+    justify-content: center;
 }

@@ -1,18 +1,9 @@
-<!DOCTYPE html>
+{% extends 'myapp/base.html' %}
+{% block title %} Servicios {% endblock title %}
+{% load static %}
 
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Pagina de servicios </title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-    </head>
-    <body>
-        <h1>Bienvenido a la pagina de servicios</h1>
-            <p> esta pagina muestra los servicios </p>
-        
-        
-    </body>
-</html>
+{% block content %}
+<h1>Bienvenido a la pagina de servicios</h1>
+<p> esta pagina muestra los servicios </p>
+{% endblock content %}
+    
