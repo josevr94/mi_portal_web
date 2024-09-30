@@ -4,7 +4,27 @@
 
 {% block content %}
 <h1>Bienvenido a esta pagina de contacto</h1>
-<p> esta es la pagina acerca de contacto </p>
+<div class ='container'>
+    <form method='post' action= '{{ contact }}'>
+        {% csrf_token %}
+    <div class='form-group'>
+        <label for="id_name">Nombre</label>
+        {{form.name}}
+    </div>
+    <div class='form-group'>
+        <label for="id_email">Email</label>
+        {{form.email}}
+    </div>
+    <div class='form-group'>
+        <label for="id_message">Mensaje</label>
+        {{form.message}}
+    </div>
+    <button type="submit" class='btn btn-primary'>Enviar</button>
+    
+    
+    </form>
+</div>
+
 
 {% endblock content %}
     

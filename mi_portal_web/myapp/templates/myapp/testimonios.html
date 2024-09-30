@@ -3,8 +3,37 @@
 {% block title %} Testimonios{% endblock title %}
 
 {% block content %}
-<h1>Testimonios</h1>
-<div>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam ea eligendi possimus reiciendis corporis ut iure facilis esse. Voluptates labore dolor vel consectetur minus, impedit sed ad ipsa natus. Ratione!</p>
+<h1>Testimonios de los clientes que visitaron el restaurant</h1>
+<div class = 'row'>
+    
+    {% for testimonio  in testimonios  %}
+    
+    
+    {% if testimonio.testimonio == '' %}
+    <div class="card m-2">
+        <h5 class="card-header">{{testimonio.nombre}}</h5>
+        <div class="card-body">
+          <h5 class="card-title">Testimonio</h5>
+          <p class="card-text">El cliente no dejo un testimonio</p>
+          
+        </div>
+      </div>
+    {% else %}
+        <div class="card m-2">
+            <h5 class="card-header">{{testimonio.nombre}}</h5>
+            <div class="card-body">
+              <h5 class="card-title">Testimonio</h5>
+              <p class="card-text">{{testimonio.testimonio}}</p>
+             
+            </div>
+          </div>
+    {% endif %}
+        
+    {% endfor %}
+        
+
+
 </div>
+
+
 {% endblock content %}

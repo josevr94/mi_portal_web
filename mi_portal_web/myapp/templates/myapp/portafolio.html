@@ -6,9 +6,22 @@
 
 {% block content %}
     
-
+    <div class = 'row'>
+      
+      {% for project in projects  %}
+      <div class="card ms-2" style="width: 18rem;">
+        <img src= {% static project.imagen %} class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{project.name}}</h5>
+          <p class="card-text">{{project.descripcion}}</p>
+          <a href={{ project.url }} target= '_blanck' class="btn btn-primary">Busqueda en google</a>
+        </div>
+      </div>
+      {% endfor %}
+        
+    </div>
     
-    <h1 class="d-flex justify-content-center mt-2">Este es el portafilio</h1>
+    {% comment %} <h1 class="d-flex justify-content-center mt-2">Este es el portafilio</h1>
     <div class="container ">
         <div class= "row mt-5">
             <div class="col">
@@ -44,5 +57,5 @@
                   </div>
             </div>
         </div>
-    </div>
+    </div> {% endcomment %}
 {% endblock content %}   

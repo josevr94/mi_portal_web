@@ -4,10 +4,26 @@
 
 {% block content %}
 <div>
-    <h1>nuesto equipo</h1>
+    <h1>Nuesto equipo</h1>
 </div>
-<div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus repellat natus ab nemo saepe. Atque minus voluptatem dignissimos impedit rerum accusamus sint? Maiores aspernatur mollitia doloremque possimus aliquid. Dignissimos, adipisci?</p>
+<div class = 'row'>
+    {% for team in teams %}
+<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    {{team.puesto}}
+  </button>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <img src={% static team.imagen %} class="img-thumbnail" alt="...">
+    <div class= 'd-flex justify-content-center'>
+        <p >{{team.nombre}} - {{team.puesto}}</p>
+    </div>
+   
+  </div>
 </div>
+{% endfor %}
+</div>
+
+    
 {% endblock content %}
     
