@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
-from .form import ContactForm
+from .form import ContactForm, EventForm, PortaForm,TestimoniosForm
+from .models import Event,Porta,Testimonios
 
 def home(request):
     # return HttpResponse('Bienvenido a tu pagina')
@@ -40,24 +41,55 @@ def our_teams(request):
     ]
     return render(request,'myapp/our_teams.html', {'teams' : teams})
 
-def portafolio(request):
-    projects = [
-        {'name': 'Pagina de restaurant', 'descripcion' : 'Proyecto para cadena de restaurantes mexicanos','imagen' : 'img/pajaro.jpg', 'url':'https://www.google.com/search?q=restaurant&rlz=1C1CHBF_esCL998CL998&oq=restaurant&gs_lcrp=EgZjaHJvbWUyDAgAEEUYORixAxiABDIMCAEQIxgnGIAEGIoFMg0IAhAAGJIDGLEDGIAEMg0IAxAAGJIDGIAEGIoFMg0IBBAAGLEDGMkDGIAEMhMIBRAuGIMBGK8BGMcBGLEDGIAEMhAIBhAuGK8BGMcBGIAEGI4FMgcIBxAAGIAEMhAICBAuGK8BGMcBGIAEGI4FMgcICRAAGIAE0gEIMTM3MWowajeoAgCwAgA&sourceid=chrome&ie=UTF-8'},
-        {'name': 'Pagina de Inmobiliarias', 'descripcion' : 'Proyecto para venta de casas','imagen' : 'img/perro.jpg','url':'https://www.google.com/search?q=inmoviliaria&sca_esv=d4fd5f361ef8046d&sca_upv=1&rlz=1C1CHBF_esCL998CL998&sxsrf=ADLYWIIXtivBZke_4SSL1CROW7d4BVXKHQ%3A1727533482752&ei=qhH4ZrbPLdq_5OUPgIaN4AU&ved=0ahUKEwi2zM7c6-WIAxXaH7kGHQBDA1wQ4dUDCA8&uact=5&oq=inmoviliaria&gs_lp=Egxnd3Mtd2l6LXNlcnAiDGlubW92aWxpYXJpYTIKEAAYgAQYkgMYCjILEAAYgAQYkgMYigUyEBAAGIAEGLEDGEMYyQMYigUyDRAuGIAEGNEDGMcBGAoyBxAAGIAEGAoyChAAGIAEGLEDGAoyDRAuGIAEGNEDGMcBGAoyBxAAGIAEGAoyBxAAGIAEGAoyBxAAGIAEGApIxyJQAFiJIXAAeAGQAQCYAX2gAaQHqgEEMTEuMbgBA8gBAPgBAZgCDKAC_wfCAgoQIxiABBgnGIoFwgIKEC4YgAQYJxiKBcICERAuGIAEGLEDGNEDGIMBGMcBwgIOEAAYgAQYsQMYgwEYigXCAhAQABiABBixAxhDGIMBGIoFwgITEC4YgAQYsQMY0QMYQxjHARiKBcICCBAuGIAEGLEDwgIEECMYJ8ICChAAGIAEGEMYigXCAgsQABiABBixAxiDAcICCBAAGIAEGJIDwgILEAAYgAQYsQMYyQPCAggQABiABBixA8ICCxAuGIAEGNEDGMcBwgIFEAAYgATCAhAQLhiABBjRAxhDGMcBGIoFwgIfEC4YgAQY0QMYQxjHARiKBRiXBRjcBBjeBBjgBNgBAZgDALoGBggBEAEYFJIHBDExLjGgB55_&sclient=gws-wiz-serp' },
-        {'name': 'Pagina de Escuelas', 'descripcion' : 'Proyecto para escuelas de niños','imagen' : 'img/raton.jpg','url':'https://www.google.com/search?q=escuela&rlz=1C1CHBF_esCL998CL998&oq=escuela&gs_lcrp=EgZjaHJvbWUyDwgAEEUYORixAxjJAxiABDINCAEQABiDARixAxiABDINCAIQABiSAxiABBiKBTINCAMQABiSAxiABBiKBTIMCAQQABhDGIAEGIoFMgYIBRBFGDwyBggGEEUYPDIGCAcQRRg90gEIMTI2MmowajmoAgCwAgA&sourceid=chrome&ie=UTF-8'}
-    ]
-    return render(request,'myapp/portafolio.html', {'projects': projects})             
+def portafolio_lista(request):
+    portafolios = Porta.objects.all() 
+   
+    return render(request,'myapp/portafolio.html',{'portafolio' : portafolios})   
 
-def testimonios(request):
-    testimonios = [
-        {'nombre':'Antai', 'testimonio':'el restaurant fue muy bueno ,buena atencion y la comida esta muy rica ,me gustaria volver'},
-        {'nombre':'Violeta', 'testimonio':'el restaurant fue muy bueno ,buena atencion y la comida esta muy rica ,me gustaria volver'},
-        {'nombre':'Belen', 'testimonio':'el restaurant fue muy bueno ,buena atencion y la comida esta muy rica ,me gustaria volver'},
-        {'nombre':'Jose', 'testimonio':'el restaurant fue muy bueno ,buena atencion y la comida esta muy rica ,me gustaria volver'},
-        {'nombre':'Pedro', 'testimonio':''},
-        {'nombre':'Juan', 'testimonio':''}
-    ]
+def portafolio_registro(request): 
+    if request.method == 'POST':
+        form = PortaForm(request.POST)   
+        if form.is_valid():
+            form.save()
+            return redirect('portafolios')    
+    else:
+        form = PortaForm()
+    return render(request,'myapp/portafolio_registro.html',{'form' : form})   
+
+
+
+
+def registro_testimonio(request):
+    if request.method == 'POST':
+        form = TestimoniosForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('testimonios') 
+    else:
+        form = TestimoniosForm       
+    return render(request,'myapp/registro_testimonios.html',{'form' : form})
+
+
+    
+    
+def testimonios_lista(request):
+    testimonios = Testimonios.objects.all()
     return render(request,'myapp/testimonios.html', {'testimonios' : testimonios })
 
+
+
+def event_register_view(request):
+    if request.method == 'POST':
+        form = EventForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('event_list')
+    else:
+        form = EventForm()
+    return render(request,'myapp/event_register.html',{'form' : form })        
+        
+def event_list_view(request):
+    events = Event.objects.all()  #esto de aca  seria como si hicieramos un SELECT * from events#      
+    return render(request, 'myapp/event_list.html',{'events':events})    
 # Create your views here.
 # aca esta el view el cual es el intermediario entre el template y el modelo, aca va la parte que hara la coneccion 

@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %}  {% comment %}el loead static es para poder cargar elementos python en el html {% endcomment %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +33,10 @@
                 <a class="nav-link" href="{% url 'contact' %}">contact</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'portafolio' %}">portafolio</a>
+                <a class="nav-link" href="{% url 'registro_portafolios' %}">Registro portafolio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'portafolios' %}">Portafolios</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'our_teams' %}">our_teams</a>
@@ -42,10 +45,19 @@
                 <a class="nav-link" href="{% url 'blog' %}">blog</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="{% url 'registro_testimonio' %}">Registro Testimonios</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="{% url 'testimonios' %}">Testimonios</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'servicios' %}">servicios</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'event_register' %}">Events</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'event_list' %}">Lista de Eventos</a>
               </li>
             </ul>
           </div>

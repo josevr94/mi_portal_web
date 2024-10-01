@@ -1,61 +1,45 @@
 {% extends 'myapp/base.html' %}
 
-{% block title %} Portafilio {% endblock title %}
+{% block title %} Portafilios {% endblock title %}
     
 {% load static %}
 
 {% block content %}
-    
-    <div class = 'row'>
+<h2>Portafolios</h2>    
+    {% if portafolios %}
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>URL</th>
+          <th>Img</th>
+        </tr>
+      </thead>
+      <tbody>
+
+    {% for portafolio in portafolios %} 
+
+    <tr>
+      <th>{{portafolio.id}}</th>
+      <th>{{portafolio.name}}</th>
+      <th>{{portafolio.description}}</th>
+      <th>{{portafolio.url}}</th>
+      <th>{{portafolio.imagen}}</th>
+    </tr>
+  
       
-      {% for project in projects  %}
-      <div class="card ms-2" style="width: 18rem;">
-        <img src= {% static project.imagen %} class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{project.name}}</h5>
-          <p class="card-text">{{project.descripcion}}</p>
-          <a href={{ project.url }} target= '_blanck' class="btn btn-primary">Busqueda en google</a>
-        </div>
-      </div>
-      {% endfor %}
-        
-    </div>
+    {% endfor %}
+    {% else %}
+    <h2>No hay portafolios agregados </h2>   
     
-    {% comment %} <h1 class="d-flex justify-content-center mt-2">Este es el portafilio</h1>
-    <div class="container ">
-        <div class= "row mt-5">
-            <div class="col">
-                <div class="card" style="width: 300px;">
-                    <img src="{% static 'img/pajaro.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <p class="card-text">TRABAJO 1: Aqui mostramos el pimero trabajo realizado con tal cosa</p>
-                    </div>
-                  </div>
-            </div>
-            <div class="col">
-                <div class="card" style="width: 300px;">
-                    <img src="{% static 'img/perro.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <p class="card-text">TRABAJO 2: Aqui mostramos el pimero trabajo realizado con tal cosa</p>
-                    </div>
-                  </div>
-            </div>
-            <div class="col">
-                <div class="card" style="width: 300px;">
-                    <img src="{% static 'img/gato.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <p class="card-text">TRABAJO 3: Aqui mostramos el pimero trabajo realizado con tal cosa</p>
-                    </div>
-                  </div>
-            </div>
-            <div class="col">
-                <div class="card" style="width: 300px;">
-                    <img src="{% static 'img/raton.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <p class="card-text">TRABAJO 4: Aqui mostramos el pimero trabajo realizado con tal cosa</p>
-                    </div>
-                  </div>
-            </div>
-        </div>
-    </div> {% endcomment %}
+    {% endif %}
+    
+  </tbody>
+  
+</table>
+
+    
+
 {% endblock content %}   

@@ -1,0 +1,39 @@
+{% extends 'myapp/base.html' %}
+{% block title %} About{% endblock title %}
+{% load static %}
+
+{% block content %}
+<h2>Lista de Eventos</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Fecha</th>
+            <th>Capacidad</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for event in events %}  
+        <tr>
+            <th>{{event.id}}</th>
+            <th>{{event.name}}</th>
+            <th>{{event.description}}</th>
+            <th>{{event.fecha}}</th>
+            <th>{{event.capacidad}}</th>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+{% endblock content %}
+
+
+
+
+
