@@ -19,4 +19,4 @@ class PortaForm(forms.ModelForm):
 class TestimoniosForm(forms.ModelForm):   
     class Meta:
         model = Testimonios
-        fields = ['name','description']                
+        fields = ['name','description', 'puesto', 'empresa']                

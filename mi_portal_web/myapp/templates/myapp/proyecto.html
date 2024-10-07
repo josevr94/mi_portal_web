@@ -1,0 +1,31 @@
+{% extends 'myapp/base.html' %}
+ {% block title%} Proyectos {% endblock title%}
+{% load static %}
+{%block content%}
+<h1>Proyectos</h1>
+<div class="accordion" id="accordionExample">
+    {%for proyect in proyects %}
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Nombre: {{proyect.nombre}} <br> 
+        ID: {{proyect.id}} <br>
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>{{proyect.fecha_inicio}}-{{proyect.fecha_fin}}</strong> {{proyect.descripcion}}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+</div>
+ 
+{% endblock content %}
+
+
+
+
+
+
+

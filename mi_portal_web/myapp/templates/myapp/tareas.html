@@ -1,0 +1,31 @@
+{% extends 'myapp/base.html' %}
+ {% block title%} Proyectos {% endblock title%}
+{% load static %}
+
+{% block content %}
+
+    
+    {% if tareas %}
+    <div class="card" style="width: 18rem;">       
+    
+        
+    {% for tarea in tareas %}
+    <div class="card-body">
+      <h5 class="card-title">{{tarea.titulo}}</h5>
+      <h6 class="card-subtitle mb-2 text-body-secondary">{{tarea.fecha_creacion}}</h6>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          {{tarea.completado}}
+        </label>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  {% else %}
+  <h2>no hay tareas</h2>
+  {% endif %}
+
+{% endblock content %}
+
+

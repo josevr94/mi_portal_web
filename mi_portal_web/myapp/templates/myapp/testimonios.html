@@ -1,33 +1,34 @@
-{% extends 'myapp/base.html' %}
+{% extends 'myapp/base.html' %} 
+{% block title%} Lista de Testimonios {% endblock title%}
 {% load static %}
-{% block title %} Testimonios{% endblock title %}
 
 {% block content %}
-<h1>Testimonios de los clientes que visitaron el restaurant</h1>
-
-{% comment %} {% if testimonio %} {% endcomment %}
-<table>
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Nombre</th>
-      <th>Descripcion</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    {% for testimonio  in testimonios  %} 
-    <tr>
-      <th>{{testimonio.id}}</th>
-      <th>{{testimonio.name}}</th>
-      <th>{{testimonio.description}}</th>
-    </tr>
-  </tbody>
-</table>
-{% endfor %}
-{% comment %} {% else %} {% endcomment %}
-{% comment %} <h2>No hay testimonios</h2> {% endcomment %}
-{% comment %} {% endif %} {% endcomment %}
+<h2>Testimonios</h2>
+<a href="{% url 'registro_testimonio' %}" class="btn btn-primary">Agregar un registro</a>
+<div class=row>
   
+  {% if testimonios %}
+  
+  {% for testimonio in testimonios %}
+  <div class="card m-2">
+    <h4 class="card-header">{{testimonio.name}}</h5>
+    <div class="card-body">
+      <h5 class="card-title">Empresa: {{testimonio.empresa}}</h5>
+      <p class="card-title">Puesto: {{testimonio.puesto}}</p>
+      <p class="card-text">"{{testimonio.description}}"</p>
+      
+    </div>
+  </div>
+  {% endfor %}
+  {% endif %}
+</div>
+
+
+
 
 {% endblock content %}
+
+
+
+
+

@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from .form import ContactForm, EventForm, PortaForm,TestimoniosForm
-from .models import Event,Porta,Testimonios
+from .models import Event,Porta,Testimonios,Proyecto, Tarea
 
 def home(request):
     # return HttpResponse('Bienvenido a tu pagina')
@@ -32,6 +32,8 @@ def blog(request):
    
     return render(request,'myapp/blog.html')
 
+
+
 def our_teams(request):
     teams = [
         {'nombre': 'juan perez', 'puesto' : 'ceo', 'imagen': 'img/ceo.jpg'},
@@ -40,6 +42,8 @@ def our_teams(request):
         {'nombre': 'Antai', 'puesto' : 'gerente', 'imagen': 'img/gerente.jpg'},
     ]
     return render(request,'myapp/our_teams.html', {'teams' : teams})
+
+
 
 def portafolio_lista(request):
     portafolios = Porta.objects.all() 
@@ -69,12 +73,11 @@ def registro_testimonio(request):
         form = TestimoniosForm       
     return render(request,'myapp/registro_testimonios.html',{'form' : form})
 
-
-    
-    
+  
 def testimonios_lista(request):
     testimonios = Testimonios.objects.all()
     return render(request,'myapp/testimonios.html', {'testimonios' : testimonios })
+
 
 
 
@@ -90,6 +93,19 @@ def event_register_view(request):
         
 def event_list_view(request):
     events = Event.objects.all()  #esto de aca  seria como si hicieramos un SELECT * from events#      
-    return render(request, 'myapp/event_list.html',{'events':events})    
+    return render(request, 'myapp/event_list.html',{'events':events}) 
+
+
+def proyecto(request):
+    proyects = Proyecto.objects.all()
+    return render(request,'myapp/proyecto.html',{'proyects': proyects})
+
+def tarea(request):
+    tareas = Tarea.objects.all()
+    return render(request,'myapp/tareas.html',{'tareas' : tareas})
+
+
+
+   
 # Create your views here.
 # aca esta el view el cual es el intermediario entre el template y el modelo, aca va la parte que hara la coneccion 
